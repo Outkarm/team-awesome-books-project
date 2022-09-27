@@ -21,3 +21,16 @@ form.addEventListener('submit', (e) => {
   const obj = { title, author };
   addBookToList(obj);
 });
+
+// function to remove book
+function removeBook(el) {
+  if (el.classList.contains('remove-btn')) {
+    el.parentElement.remove();
+  }
+}
+
+// Remove book
+document.querySelector('.container').addEventListener('click', (e) => {
+  // delete elements from screen
+  removeBook(e.target);
+});
