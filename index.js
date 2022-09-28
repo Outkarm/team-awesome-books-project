@@ -7,7 +7,7 @@ class BookListApp {
     this.container = document.querySelector('.book-container');
   }
 
-  addBookToList(book) {
+  addBookToList(book) { 
     const row = document.createElement('tr');
     row.innerHTML = `
       <td>"${book.title}" by ${book.author}</td>
@@ -21,6 +21,7 @@ class BookListApp {
 1: Add book to the dynamic elements
 2: Add book to the array of book
 3: Add book to the local storage
+4: clearFields input values
 */
   AppendBook() {
     const form = document.querySelector('form');
@@ -44,26 +45,25 @@ class BookListApp {
 
   // Function to perform the following actions:
   /*
-  1: Delete book to the dynamic elements
-  2: Delete book to the array of book
-  3: Delete book to the local storage
+  1: Delete book from array of book
+  2: Delete book from the local storage
   */
-
   deleteBook() {
     const books = this.bookList;
     books.forEach((book, index) => {
       books.splice(index, 1);
     });
     localStorage.setItem('books', JSON.stringify(books));
+    console.log(this.bookList);
   }
-
+  
   // Function to remove books when 'remove" button clicked
   removeButton() {
     this.container.addEventListener('click', (e) => {
       // delete elements from screen
       this.removeBook(e.target);
       // remove book from local storage
-      this.deleteBook(e.target);
+      this.deleteBook();
     });
   }
 

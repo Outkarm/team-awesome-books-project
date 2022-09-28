@@ -4,18 +4,34 @@
   padding: 0;
   margin: 0;
   font-family: "Poppins", 'Times New Roman', Times, serif;
+  list-style: none;
+  text-decoration: none;
 }
-
-body {
-  position: relative;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+body{
+  padding: 8px;
+}
+.nav-container{
+  display:flex;
+  border: 3px solid black;
+  max-width: 100%;
+  justify-content: space-between;
+  padding:1rem;
   align-items: center;
-  justify-content: center;
-  gap: 2rem;
 }
 
+.nav-items{
+  display:flex;
+  gap: 30px;
+}
+.nav-link{
+  color: black;
+}
+.nav-link:hover{
+  color: rgba(0, 0, 255, 0.75);
+}
+.nav-link:active{
+  color: rgb(2, 2, 55);
+}
 .book-container {
   width: 70vw;
   border-collapse: collapse;
