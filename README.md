@@ -4,7 +4,7 @@ Project allow user to add desire books to the list and also delete books. It mak
 ## Project Goals:
 - Add books to the list
 - Remove books in the list
-- Preserve data in the web browser
+- Preserve data in the web browser using local storage
 - Add data to the collection
 
 ## Prequisite Knowledge:
@@ -28,6 +28,8 @@ git clone git@github.com:Outkarm/team-awesome-books-project.git
 - GitHub Username: [Outkram](https://github.com/Outkarm)
 - GitHub Username: [Ridwan](https://github.com/Ridwanullahi-code)
 
+- GitHub Username: [Alex](https://github.com/Osoro254Alex
+)
 
 ## Aknowledgements
-- Thanks to microverse for supporting throughout this project
+- Thanks to microverse for its support throughout the project

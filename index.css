@@ -1,1 +1,79 @@
-/* stylint-disable */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", 'Times New Roman', Times, serif;
+}
+
+body {
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.book-container {
+  width: 70vw;
+  border-collapse: collapse;
+  margin-bottom: 3rem;
+  border: 1px solid grey;
+  padding: 10px;
+}
+
+.book-container tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-container tr:nth-child(even) {
+  background-color: #f2f2f29d;
+}
+
+.book-container tr:hover {
+  background-color: #ddd;
+}
+
+.book-container td {
+  padding: 8px;
+}
+
+.book-container td:last-child button {
+  background-color: red;
+  border: 1px solid red;
+  padding: 4px;
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form [class*='book'] {
+  width: 70vw;
+  margin-bottom: 1rem;
+  padding: 6px;
+}
+
+.add-btn {
+  color: white;
+  background-color: blueviolet;
+  border: 1px solid blueviolet;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  border-radius: 6px;
+}
+
+.add-btn:hover {
+  opacity: 0.9;
+}
+
+.add-btn:active {
+  background-color: rgb(39, 2, 75);
+}

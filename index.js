@@ -1,72 +1,90 @@
-const container = document.querySelector('.container');
-const bookList = [];
-// Add book to list
-function addBookToList(book) {
-  const div = document.createElement('div');
-  div.setAttribute('class', 'min-container');
-  div.innerHTML = `
-    <p>${book.title}</p>
-    <p>${book.author}</p>
-    <button class= "remove-btn">Remove</button>
-    <hr>
-    `;
-  container.append(div);
-}
+/* eslint-disable */
 
-// get book from local storage
-function displayBooks() {
-  const books = JSON.parse(localStorage.getItem('books'));
-  books.forEach((book) => addBookToList(book));
-}
+// BookListApp class: class to hold books
+class BookListApp {
+  constructor() {
+    this.bookList = [];
+    this.container = document.querySelector('.book-container');
+  }
 
-// function to add book to local storage
-function addBook(books) {
-  localStorage.setItem('books', JSON.stringify(books));
-}
+  addBookToList(book) {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>"${book.title}" by ${book.author}</td>
+      <td><button class= "remove-btn">Remove</button></td>
+      `;
+    this.container.append(row);
+  }
 
-// Delete book from local storage
-function deleteBook() {
-  const books = bookList;
-  books.forEach((book, index) => {
-    books.splice(index, 1);
-  });
-  localStorage.setItem('books', JSON.stringify(books));
-}
+  // Function to perform the following action:
+  /*
+1: Add book to the dynamic elements
+2: Add book to the array of book
+3: Add book to the local storage
+*/
+  AppendBook() {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const title = document.querySelector('.title').value;
+      const author = document.querySelector('.author').value;
+      this.addBookToList({ title, author });
+      this.bookList.push({ title, author });
+      localStorage.setItem('books', JSON.stringify(this.bookList));
+      this.clearFields();
+    });
+  }
 
-// Clear form input's values
-function clearFields() {
-  document.querySelector('.title').value = '';
-  document.querySelector('.author').value = '';
-}
+  // function to remove book
+  removeBook(el) {
+    if (el.classList.contains('remove-btn')) {
+      el.parentElement.parentElement.remove();
+    }
+  }
 
-// function to add book and display
-const form = document.querySelector('form');
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const title = document.querySelector('.title').value;
-  const author = document.querySelector('.author').value;
-  const obj = { title, author };
-  // Add book to the collection
-  addBookToList(obj);
-  bookList.push(obj);
-  addBook(bookList);
-  clearFields();
-});
+  // Function to perform the following actions:
+  /*
+  1: Delete book to the dynamic elements
+  2: Delete book to the array of book
+  3: Delete book to the local storage
+  */
 
-// function to remove book
-function removeBook(el) {
-  if (el.classList.contains('remove-btn')) {
-    el.parentElement.remove();
+  deleteBook() {
+    const books = this.bookList;
+    books.forEach((book, index) => {
+      books.splice(index, 1);
+    });
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  // Function to remove books when 'remove" button clicked
+  removeButton() {
+    this.container.addEventListener('click', (e) => {
+      // delete elements from screen
+      this.removeBook(e.target);
+      // remove book from local storage
+      this.deleteBook(e.target);
+    });
+  }
+
+  // get book from local storage
+  displayBooks() {
+    const books = JSON.parse(localStorage.getItem('books'));
+    books.forEach((book) => this.addBookToList(book));
+  }
+
+  // Clear form input's values
+  clearFields() {
+    document.querySelector('.title').value = '';
+    document.querySelector('.author').value = '';
+  }
+
+  callingAllFn() {
+    this.AppendBook();
+    this.removeButton();
+    this.displayBooks();
   }
 }
-
-// Remove book
-document.querySelector('.container').addEventListener('click', (e) => {
-  // delete elements from screen
-  removeBook(e.target);
-  // remove book from local storage
-  deleteBook(e.target);
-});
-
-// Display book
-document.addEventListener('DOMContentLoaded', displayBooks());
+// instantiate class
+const books = new BookListApp();
+document.addEventListener('DOMContentLoaded', books.callingAllFn());
