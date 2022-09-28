@@ -79,6 +79,9 @@ class BookListApp {
     document.querySelector('.author').value = '';
   }
 
+  // Navigation links function
+  
+
   callingAllFn() {
     this.AppendBook();
     this.removeButton();

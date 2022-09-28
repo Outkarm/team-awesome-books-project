@@ -9,7 +9,10 @@
 }
 body{
   padding: 8px;
+  position: relative;
+  text-align: center;
 }
+
 .nav-container{
   display:flex;
   border: 3px solid black;
@@ -32,6 +35,14 @@ body{
 .nav-link:active{
   color: rgb(2, 2, 55);
 }
+
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20vh 0
+}
+
 .book-container {
   width: 70vw;
   border-collapse: collapse;
