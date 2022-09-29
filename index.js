@@ -88,32 +88,3 @@ class BookListApp {
 // instantiate class
 const books = new BookListApp();
 document.addEventListener('DOMContentLoaded', books.callingAllFn());
-// Switching Through Sections
-const allSections = document.querySelectorAll(".sections")
-const listCont = document.querySelector(".nav-items")
-
-function clickedBtn(){
-    listCont.addEventListener("click", function(e){
-      e.preventDefault()
-      const id = e.target.dataset.id
-
-      if(id){
-        // Switching Between the List, Add-Book and Contact navigations
-        let currenBtn = document.querySelectorAll(".active-btn")
-        currenBtn[0].className = currenBtn[0].className.replace("active-btn", "")
-        e.target.className += " active-btn"
-        //  Removing the active section
-        allSections.forEach((section)=>{
-        section.classList.remove("activesec")
-        })
-         //  Adding the active section
-        const targetedSec = document.getElementById(id)
-        targetedSec.classList.add("activesec")
-      }
-    })
-  
-
-}
-
-clickedBtn()
-
