@@ -4,16 +4,44 @@
   padding: 0;
   margin: 0;
   font-family: "Poppins", 'Times New Roman', Times, serif;
+  list-style: none;
+  text-decoration: none;
 }
-
-body {
+body{
+  padding: 8px;
   position: relative;
   text-align: center;
+}
+
+.nav-container{
+  display:flex;
+  border: 3px solid black;
+  max-width: 100%;
+  justify-content: space-between;
+  padding:1rem;
+  align-items: center;
+}
+
+.nav-items{
+  display:flex;
+  gap: 30px;
+}
+
+.nav-link{
+  color: black;
+  padding: .3rem;
+}
+
+header {
+  position: sticky;
+  z-index: 10;
+}
+
+main{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 2rem;
+  margin: 20vh 0
 }
 
 .book-container {
@@ -77,3 +105,47 @@ form [class*='book'] {
 .add-btn:active {
   background-color: rgb(39, 2, 75);
 }
+
+.active-btn {
+ color: blueviolet;
+ transition: all .4s ease-in-out;
+}
+
+section {
+  min-height: 100vh;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 3rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sections {
+  transform: translateX(-100%) scale(0);
+}
+
+.sec1 {
+  display: none;
+  transform: translateX(0) scale(1);
+}
+
+.sec2 {
+  display: none;
+  transform: translateX(0) scale(1);
+}
+
+.sec3 {
+  display: none;
+  transform: translateX(0) scale(1);
+}
+
+.activesec {
+  display: flex;
+  text-align: center;
+  height: 100vh;
+
+}
+
