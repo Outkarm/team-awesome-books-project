@@ -7,7 +7,7 @@ class BookListApp {
     this.container = document.querySelector('.book-container');
   }
 
-  addBookToList(book) { 
+  addBookToList(book) {
     const row = document.createElement('tr');
     row.innerHTML = `
       <td>"${book.title}" by ${book.author}</td>
@@ -21,7 +21,6 @@ class BookListApp {
 1: Add book to the dynamic elements
 2: Add book to the array of book
 3: Add book to the local storage
-4: clearFields input values
 */
   AppendBook() {
     const form = document.querySelector('form');
@@ -45,25 +44,26 @@ class BookListApp {
 
   // Function to perform the following actions:
   /*
-  1: Delete book from array of book
-  2: Delete book from the local storage
+  1: Delete book to the dynamic elements
+  2: Delete book to the array of book
+  3: Delete book to the local storage
   */
+
   deleteBook() {
     const books = this.bookList;
     books.forEach((book, index) => {
       books.splice(index, 1);
     });
     localStorage.setItem('books', JSON.stringify(books));
-    console.log(this.bookList);
   }
-  
+
   // Function to remove books when 'remove" button clicked
   removeButton() {
     this.container.addEventListener('click', (e) => {
       // delete elements from screen
       this.removeBook(e.target);
       // remove book from local storage
-      this.deleteBook();
+      this.deleteBook(e.target);
     });
   }
 
@@ -79,9 +79,6 @@ class BookListApp {
     document.querySelector('.author').value = '';
   }
 
-  // Navigation links function
-  
-
   callingAllFn() {
     this.AppendBook();
     this.removeButton();
@@ -91,3 +88,32 @@ class BookListApp {
 // instantiate class
 const books = new BookListApp();
 document.addEventListener('DOMContentLoaded', books.callingAllFn());
+// Switching Through Sections
+const allSections = document.querySelectorAll(".sections")
+const listCont = document.querySelector(".nav-items")
+
+function clickedBtn(){
+    listCont.addEventListener("click", function(e){
+      e.preventDefault()
+      const id = e.target.dataset.id
+
+      if(id){
+        // Switching Between the List, Add-Book and Contact navigations
+        let currenBtn = document.querySelectorAll(".active-btn")
+        currenBtn[0].className = currenBtn[0].className.replace("active-btn", "")
+        e.target.className += " active-btn"
+        //  Removing the active section
+        allSections.forEach((section)=>{
+        section.classList.remove("activesec")
+        })
+         //  Adding the active section
+        const targetedSec = document.getElementById(id)
+        targetedSec.classList.add("activesec")
+      }
+    })
+  
+
+}
+
+clickedBtn()
+
