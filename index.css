@@ -26,14 +26,15 @@ body{
   display:flex;
   gap: 30px;
 }
+
 .nav-link{
   color: black;
+  padding: .3rem;
 }
-.nav-link:hover{
-  color: rgba(0, 0, 255, 0.75);
-}
-.nav-link:active{
-  color: rgb(2, 2, 55);
+
+header {
+  position: sticky;
+  z-index: 10;
 }
 
 main{
@@ -104,3 +105,47 @@ form [class*='book'] {
 .add-btn:active {
   background-color: rgb(39, 2, 75);
 }
+
+.active-btn {
+ color: blueviolet;
+ transition: all .4s ease-in-out;
+}
+
+section {
+  min-height: 100vh;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 3rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sections {
+  transform: translateX(-100%) scale(0);
+}
+
+.sec1 {
+  display: none;
+  transform: translateX(0) scale(1);
+}
+
+.sec2 {
+  display: none;
+  transform: translateX(0) scale(1);
+}
+
+.sec3 {
+  display: none;
+  transform: translateX(0) scale(1);
+}
+
+.activesec {
+  display: flex;
+  text-align: center;
+  height: 100vh;
+
+}
+
