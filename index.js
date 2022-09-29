@@ -52,7 +52,7 @@ class BookListApp {
   deleteBook() {
     const books = this.bookList;
     books.forEach((book, index) => {
-      books.splice(index, 1);
+        books.splice(index, 1);
     });
     localStorage.setItem('books', JSON.stringify(books));
   }
@@ -63,7 +63,7 @@ class BookListApp {
       // delete elements from screen
       this.removeBook(e.target);
       // remove book from local storage
-      this.deleteBook(e.target);
+      this.deleteBook();
     });
   }
 
@@ -78,42 +78,51 @@ class BookListApp {
     document.querySelector('.title').value = '';
     document.querySelector('.author').value = '';
   }
+  getDate(){
+    const time = document.querySelector('.time');
+    var date = new Date();
+    var now = date.toString().split(' ').splice(1,4);
+    let pe;
+    if(date.getHours() >= 12){
+      pe = 'pm'
+    }else{
+      pe = "am";
+    }
+    var mon = `${now[0]} ${now[1]}th ${now[2]}, ${now[3]} ${pe}`
+    time.innerHTML = mon;
+     
+  }
+  navLinks(){
+    // Switching Through Sections
+      const allSections = document.querySelectorAll(".sections")
+      const listCont = document.querySelector(".nav-items")
+      listCont.addEventListener("click", (e) =>{
+        e.preventDefault()
+        const id = e.target.dataset.id
+        if(id){
+
+          //Removing the active section
+          allSections.forEach((section)=>{
+          section.classList.remove("activesec")
+          })
+          //  Adding the active section
+          const targetedSec = document.getElementById(id)
+          targetedSec.classList.add("activesec")
+      }
+    })
+}
 
   callingAllFn() {
     this.AppendBook();
     this.removeButton();
     this.displayBooks();
+    this.navLinks();
+    this.getDate();
   }
 }
 // instantiate class
 const books = new BookListApp();
 document.addEventListener('DOMContentLoaded', books.callingAllFn());
-// Switching Through Sections
-const allSections = document.querySelectorAll(".sections")
-const listCont = document.querySelector(".nav-items")
 
-function clickedBtn(){
-    listCont.addEventListener("click", function(e){
-      e.preventDefault()
-      const id = e.target.dataset.id
 
-      if(id){
-        // Switching Between the List, Add-Book and Contact navigations
-        let currenBtn = document.querySelectorAll(".active-btn")
-        currenBtn[0].className = currenBtn[0].className.replace("active-btn", "")
-        e.target.className += " active-btn"
-        //  Removing the active section
-        allSections.forEach((section)=>{
-        section.classList.remove("activesec")
-        })
-         //  Adding the active section
-        const targetedSec = document.getElementById(id)
-        targetedSec.classList.add("activesec")
-      }
-    })
-  
-
-}
-
-clickedBtn()
 
