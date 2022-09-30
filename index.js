@@ -78,6 +78,7 @@ class BookListApp {
     document.querySelector('.title').value = '';
     document.querySelector('.author').value = '';
   }
+  // Function to handle datetime
   getDate(){
     const time = document.querySelector('.time');
     var date = new Date();
@@ -92,6 +93,7 @@ class BookListApp {
     time.innerHTML = mon;
      
   }
+  // Method to switch between sections
   navLinks(){
     // Switching Through Sections
       const allSections = document.querySelectorAll(".sections")
